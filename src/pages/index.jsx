@@ -6,61 +6,58 @@ import { useState } from "react";
 
 export default function Home() {
   const [weather, setWeather] = useState({});
+  const [input, setInput] = useState("");
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?lat=33.44&lon=-94.04&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}&q=Ulaanbaatar&units=metric`;
-    
-  const cityUrl = `https://api.api-ninjas.com/v1/city?name=Tokyo`;
+  console.log("input:", input);
 
-  
-  const getCity = async() =>{
-   try{
+  const cityUrl = `https://api.api-ninjas.com/v1/city?name=${input}`;
 
- const response = await fetch(cityUrl, {
-      headers:{
-        "X-Api-key":process.env.NEXT_PUBLIC_CITY_API_KEY,
-      }
-    });
-    const data =- await response.json();
-    console.log(data)
-
-   }catch (error){
-    console.log(error)
-   }
-  }
-
-
-
-  const getWeather = async () => {
+  const getCity = async () => {
     try {
-      const response = await fetch(url);
+      const response = await fetch(cityUrl, {
+        headers: {
+          "X-Api-Key": process.env.NEXT_PUBLIC_CITY_API_KEY,
+        },
+      });
 
       const data = await response.json();
 
-      console.log(data);
+      return data;
+    } catch (error) {
+      console.log("CITY error:", error);
+    }
+  };
+
+  const getWeather = async () => {
+    try {
+      const city = await getCity();
+      console.log(city);
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${city[0].latitude}&lon=${city[0].longitude}&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}&units=metric`
+      );
+
+      const data = await response.json();
 
       setWeather(data);
     } catch (error) {
-
-      console.log(error);
+      console.log("WEATHER ALDAA:", error);
     }
   };
-console.log("weather", weather?.main?.temp)
+
+  console.log("weather data:", weather);
 
   return (
     <div className="flex w-[100wv] h-[100vh] ">
-
-      <button onClick={getCity}>get City</button>
-      
       <div className="w-[50%] bg-[#F3F4F6]   flex items-center">
         <div className="relative  w-[800px] h-[1200px] border-2 border-indigo-600 my-0 mx-auto ">
-          <Input getWeather={getWeather} />
+          <Input getWeather={getWeather} setInput={setInput} />
           <img
             src="./zurag/nar1.png"
             className="w-[176px] h-[176px] mt-[47px] absolute left-[130px] z-0 top-[80px]"
             alt="nar-1"
           />
           <div className="w-[100%] h-[100%] flex justify-center items-center absolute z-20">
-            <Nar weather={weather}/>
+            <Nar weather={weather} />
           </div>
         </div>
       </div>

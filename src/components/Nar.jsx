@@ -1,12 +1,14 @@
 import { HeartIcon, HomeIcon, MapIcon, MapPin, User2Icon } from "lucide-react";
+import { useState } from "react";
 
 export const Nar = ({weather}) => {
+
   return (
     <div className=" w-[414px] text-[#111827] px-[48px] py-[40px] rounded-4xl bg-white/750 backdrop-blur-lg shadow-lg">
       <div className="flex justify-between items-center">
         <div>
-          <p className="text-[18px]">weather</p>
-          <h1 className="text-[48px] font-[800]">{weather?.name}</h1>
+          <p className="text-[18px]"></p>
+          <h1 className="text-[48px] font-[800]">{weather.name}</h1>
         </div>
         <MapPin className="text-black ml-[40px]" />
       </div>
