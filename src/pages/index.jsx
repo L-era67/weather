@@ -2,38 +2,39 @@ import { Toirog } from "@/components/toirog";
 import { Input } from "../components/input";
 import { Nar } from "../components/Nar";
 import { Sar } from "../components/Sar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const [weather, setWeather] = useState({});
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState("Ulaanbaatar");
 
-  console.log("input:", input);
 
-  const cityUrl = `https://api.api-ninjas.com/v1/city?name=${input}`;
 
-  const getCity = async () => {
-    try {
-      const response = await fetch(cityUrl, {
-        headers: {
-          "X-Api-Key": process.env.NEXT_PUBLIC_CITY_API_KEY,
-        },
-      });
+  // const cityUrl = `https://api.api-ninjas.com/v1/city?name=${input}`;
 
-      const data = await response.json();
+  // const getCity = async () => {
+  //   try {
+  //     const response = await fetch(cityUrl, {
+  //       headers: {
+  //         "X-Api-Key": process.env.NEXT_PUBLIC_CITY_API_KEY,
+  //       },
+  //     });
 
-      return data;
-    } catch (error) {
-      console.log("CITY error:", error);
-    }
-  };
+  //     const data = await response.json();
+
+  //     return data;
+  //   } catch (error) {
+  //     console.log("CITY error:", error);
+  //   }
+  // };
 
   const getWeather = async () => {
     try {
-      const city = await getCity();
-      console.log(city);
+      // const city = await getCity();
+      // console.log(city);
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${city[0].latitude}&lon=${city[0].longitude}&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}&units=metric`
+        // `https://api.openweathermap.org/data/2.5/weather?lat=${city[0].latitude}&lon=${city[0].longitude}&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}&units=metric`
+       `https://api.weatherapi.com/v1/forecast.json?key=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}&q=${input}`
       );
 
       const data = await response.json();
@@ -44,6 +45,11 @@ export default function Home() {
     }
   };
 
+  useEffect(()=>{
+    getWeather();
+    console.log(getWeather())
+  }, [])
+
   console.log("weather data:", weather);
 
   return (
@@ -51,6 +57,7 @@ export default function Home() {
       <div className="w-[50%] bg-[#F3F4F6]   flex items-center">
         <div className="relative  w-[800px] h-[1200px] border-2 border-indigo-600 my-0 mx-auto ">
           <Input getWeather={getWeather} setInput={setInput} />
+          {/* <Input getWeather={getWeather}/> */}
           <img
             src="./zurag/nar1.png"
             className="w-[176px] h-[176px] mt-[47px] absolute left-[130px] z-0 top-[80px]"
@@ -75,7 +82,7 @@ export default function Home() {
           />
 
           <div className="absolute z-10 w-[100%] h-[100%] flex justify-center items-center">
-            <Sar />
+            <Sar  weather={weather}/>
           </div>
         </div>
       </div>
