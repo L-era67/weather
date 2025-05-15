@@ -8,7 +8,6 @@ export const Input = ({ getWeather,setInput }) => {
   }
 
 
-
   return (
     <div className="absolute z-30 top-[110px] left-[40px] flex px-[24px] py-[16px] bg-white justify-start items-center gap-[16px] rounded-[48px] w-[567px] ">
       <SearchIcon className="text-black" />
