@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [weather, setWeather] = useState({});
   const [input, setInput] = useState("Ulaanbaatar");
+  const [cities, setCities] = useState([])
 
 
 
@@ -45,7 +46,28 @@ export default function Home() {
     }
   };
 
+  const getCities =async () =>{
+    try {
+       const response = await fetch (`https://countriesnow.space/api/v0.1/countries`);
+
+       const medeelel =await response.json(); // {error: , msg: , "data:" [],} ene data-g awah heregtei
+
+       console.log(medeelel.data[0].cities[0]) //ingej baij yg ter hotiin ner garch irj baina
+       console.log(medeelel)
+
+       const medeelelMassive = medeelel.data //odoo yg data:[{country}, {country:"ulsin ner" ,cities:[hotuudin ner baina] }]
+
+      const Country = medeelelMassive.filter((uls)=> uls.cities.find((hot)=> hot==="Tokyo"))
+      
+       console.log( typeof Country)
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   useEffect(()=>{
+    getCities();
     getWeather();
     console.log(getWeather())
   }, [])

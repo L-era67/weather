@@ -2,7 +2,7 @@ import { HeartIcon, HomeIcon, MapIcon, MapPin, User2Icon } from "lucide-react";
 
 export const Sar = ({ weather }) => {
   return (
-    <div className="w-[414px] text-[#white] bg-[#111827BF] shadow-xl  px-[48px] py-[40px] rounded-4xl">
+    <div className="w-[414px] text-[#white] bg-[#111827BF] shadow-xl  px-[48px] py-[40px]  backdrop-blur-lg rounded-4xl">
       <div className="flex justify-between items-center">
         <div>
           <p className="text-[18px]">

@@ -24,7 +24,7 @@ export const Toirog = () => {
         </div>
 
         <div className="relative w-[80px] h-[63px] left-[70px] bottom-[22px] bg-white">
-          <div className="absolute w-[80px] h-[63px] bg-white rounded-tl-full"></div>
+          <div className="absolute w-[80px] h-[63px] bg-amber-400 rounded-tl-full"></div>
         </div>
       </div>
     </div>
