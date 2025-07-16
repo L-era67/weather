@@ -15,7 +15,7 @@ export const Nar = ({ weather }) => {
       </div>
       <img className="ww-262px h-262px" src="./zurag/sun3.png" alt="nar-2" />
 
-      <h1 className="text-[110px] w-[800] font-[800] -mb-5 bg-gradient-to-b from-black to-white text-transparent bg-clip-text">
+      <h1 className="text-[100px] w-[800] font-[800] -mb-5 bg-gradient-to-b from-black to-white text-transparent bg-clip-text">
         {weather?.current?.temp_c}
       </h1>
 

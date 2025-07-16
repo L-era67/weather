@@ -1,30 +1,26 @@
 export const Toirog = () => {
   return (
-    <div className="realtive z-0 w-[100%] h-[100%] flex justify-center items-center">
-      <div className="absolute  w-[140px] h-[140px] border-4 border-amber-500  bg-white rounded-full "></div>
-      <div className="absolute w-[340px] h-[340px] border-4 border-amber-300 rounded-full"></div>
-      <div className="absolute w-[540px] h-[540px] border-4 border-amber-300 rounded-full"></div>
-      <div className="absolute w-[940px] h-[940px] border-4 border-amber-300 rounded-full"></div>
-
-      <div className="absolute flex flex-col">
-        <div className="w-[80px] h-[63px] border-2 border-blue-400 relative left-[70px] top-[20px] bg-white">
-          <div className="absolute w-[80px] h-[63px] bg-amber-400  rounded-bl-full"></div>
+    <div className="relative inset-0 z-3 flex items-center justify-center">
+      <div className="absolute border border-gray-300 rounded-full h-[140px] w-[140px]"></div>
+      <div className="absolute border border-gray-300 rounded-full h-[340px] w-[340px]"></div>
+      <div className="absolute border border-gray-300 rounded-full h-[540px] w-[540px]"></div>
+      <div className="absolute border border-gray-300 rounded-full h-[940px] w-[940px]"></div>
+      <div className="flex items-center justify-center w-[140px] h-[140px] bg-[#f3f4f6] rounded-full ">
+        <div className="relative">
+          <div className="absolute -top-[114px] left-[47px] w-10 h-14 bg-[#F3F4F6]"></div>
+          <div className="absolute -top-[117px] left-[48px] w-20 h-16 bg-[#0F141E] rounded-bl-full"></div>
         </div>
-        <div className=" w-[140px] h-[140px] border-2 border-b-blue-400 bg-blue  gap-[16px] flex justify-center items-center">
-          <img
-            className="w-[43px] h-[86px] text-white"
-            src="./zurag/VectorL.png"
-            alt="L"
-          />
-          <img
-            className=" w-[43px] h-[86px] rounded-tr-full rounded-br-full  bg-amber-300"
-            src="./zurag/VectorR.png"
-            alt="r"
-          />
+        <div className="flex items-center justify-center gap-[10px]">
+          <span>
+            <img src="./zurag/VectorL.png" alt="neg" />
+          </span>
+          <span>
+            <img src="./zurag/VectorR.png" alt="hoer" />
+          </span>
         </div>
-
-        <div className="relative w-[80px] h-[63px] left-[70px] bottom-[22px] bg-white">
-          <div className="absolute w-[80px] h-[63px] bg-amber-400 rounded-tl-full"></div>
+        <div className="relative">
+          <div className="absolute top-[55px] right-[10px] w-10 h-14 bg-[#f3f4f6]"></div>
+          <div className="absolute top-[53.5px] right-[-30.5px] w-20 h-16 bg-[#0f141e] rounded-tl-full"></div>
         </div>
       </div>
     </div>

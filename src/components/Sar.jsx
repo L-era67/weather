@@ -14,7 +14,7 @@ export const Sar = ({ weather }) => {
       </div>
       <img className="ww-262px h-262px" src="./zurag/moon.png" alt="nar-2" />
 
-      <h1 className="text-[144px] w-[800] font-[800] -mb-5 bg-gradient-to-b from-white to-black text-transparent bg-clip-text">
+      <h1 className="text-[100px] w-[800] font-[800] -mb-5 bg-gradient-to-b from-white to-black text-transparent bg-clip-text">
         {weather?.forecast?.forecastday[0]?.hour[23].temp_c}
       </h1>
 
